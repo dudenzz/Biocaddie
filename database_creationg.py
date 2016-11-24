@@ -12,7 +12,11 @@ for file in listdir(working_dir):
     for c in xmlTree:
         if c.tag == 'METADATA':
             jsonTree = json.loads(c.text)
-            print jsonTree['dataItem']
+            try:
+                geo_acc_link = jsonTree['dataItem']['geo_accession']
+                print 'got geoaccess'
+            except:
+                print 'no geoaccess'
 
 
 
