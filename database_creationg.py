@@ -9,7 +9,7 @@ import urllib2
 defs = defaults()
 working_dir = defs.root + defs.xmldocs
 for i,file in enumerate(listdir(working_dir)):
-    if i%1000 == 0:
+    if i%10 == 0:
         print i
     xmlTree = ET.parse(working_dir + '/' + file).getroot()
     for c in xmlTree:
