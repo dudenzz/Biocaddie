@@ -4,9 +4,9 @@ from os import listdir
 from initials import defaults
 
 
-defaults()
+defs = defaults()
 
-for file in listdir(defaults.root + defaults.xmlexamples):
+for file in listdir(defs.root + defs.xmlexamples):
     print file
 
 
