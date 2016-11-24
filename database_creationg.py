@@ -7,7 +7,9 @@ from initials import defaults
 defs = defaults()
 
 for file in listdir(defs.root + defs.xmlexamples):
-    print file
+    iFile = open(file)
+    text = iFile.read()
+    print text
 
 
 
