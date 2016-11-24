@@ -10,7 +10,7 @@ for file in listdir(working_dir):
     xmlTree = ET.parse(working_dir + '/' + file).getroot()
     for c in xmlTree:
         if c.tag == 'METADATA':
-            print c
+            print c.text
 
 
 
