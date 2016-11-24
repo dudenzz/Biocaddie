@@ -5,3 +5,5 @@ class defaults:
         self.root = '//mnt/raid0/kuba'
         self.xmldocs = '/update_xml_folder'
         self.xmlexamples = '/biocaddie_testing/sample_docs'
+        self.geohtmls = '/biocaddie_testing/geo_html'
+
