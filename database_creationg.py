@@ -8,7 +8,9 @@ import urllib2
 
 defs = defaults()
 working_dir = defs.root + defs.xmldocs
-for file in listdir(working_dir):
+for i,file in enumearate(listdir(working_dir)):
+    if i%10000 == 0:
+        print i
     xmlTree = ET.parse(working_dir + '/' + file).getroot()
     for c in xmlTree:
         if c.tag == 'METADATA':
