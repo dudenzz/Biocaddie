@@ -5,9 +5,9 @@ from initials import defaults
 
 
 defs = defaults()
-
-for file in listdir(defs.root + defs.xmlexamples):
-    iFile = open(file)
+working_dir = defs.root + defs.xmlexamples
+for file in listdir(working_dir):
+    iFile = open(working_dir + file)
     text = iFile.read()
     print text
 
