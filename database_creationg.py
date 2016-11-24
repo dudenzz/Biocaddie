@@ -12,7 +12,7 @@ for file in listdir(working_dir):
     for c in xmlTree:
         if c.tag == 'METADATA':
             jsonTree = json.loads(c.text)
-            print jsonTree
+            print jsonTree['dataItem']
 
 
 
