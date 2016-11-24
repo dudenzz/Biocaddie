@@ -7,7 +7,7 @@ import json
 import urllib2
 
 defs = defaults()
-working_dir = defs.root + defs.xmlexamples
+working_dir = defs.root + defs.xmldocs
 for file in listdir(working_dir):
     xmlTree = ET.parse(working_dir + '/' + file).getroot()
     for c in xmlTree:
