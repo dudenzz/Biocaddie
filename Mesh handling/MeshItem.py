@@ -12,11 +12,15 @@ class MeshItem:
                 self.additional_names.append(i[1][0].text)
 class Mesh:
     def __init__(self, file):
+        print 'parsing'
         self.tree = ET.parse(file)
         self.root = self.tree.getroot()
         self.items = []
+
     def parseItems(self):
+        print 'starting parse procedure; total amount of concepts:'
         print len(self.root)
+        print 'current concept:'
         for i,item in enumerate(self.root):
             print i
             self.items.append(MeshItem(item))
