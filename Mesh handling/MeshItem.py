@@ -9,7 +9,10 @@ class MeshItem:
         self.additional_names = []
         for i in xml:
             if i.tag == 'ConceptList':
-                self.additional_names.append(i[1][0].text)
+                try:
+                    self.additional_names.append(i[1][0].text)
+                except:
+                    print self.id
 class Mesh:
     def __init__(self, file):
         print 'parsing'
