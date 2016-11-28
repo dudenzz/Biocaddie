@@ -16,7 +16,9 @@ class Mesh:
         self.root = self.tree.getroot()
         self.items = []
     def parseItems(self):
-        for item in self.root:
+        print len(self.root)
+        for i,item in enumerate(self.root):
+            print i
             self.items.append(MeshItem(item))
     def synonyms(self):
         ret = ''
