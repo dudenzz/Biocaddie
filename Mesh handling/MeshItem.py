@@ -27,6 +27,6 @@ class Mesh:
         return ret
 
 
-m = Mesh('desc2016.xml')
+m = Mesh('//mnt/raid0/kuba/trec_data/scripts/mesh-qe/desc2016.xml')
 m.parseItems()
 print m.synonyms()
