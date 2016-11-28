@@ -33,6 +33,7 @@ class Mesh:
             ret += item.name
             for k in item.additional_names:
                 ret += ' ' + k
+            ret += '\n'
         return ret
 
 
