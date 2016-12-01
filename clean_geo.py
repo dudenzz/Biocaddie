@@ -13,7 +13,8 @@ def cleanhtml(raw_html):
   return cleantext
 htmlparser = etree.HTMLParser()
 for file in listdir(defs.root+defs.geohtmls):
-    root = etree.parse(defs.root+defs.geohtmls + '/' + file,htmlparser)
+    tree = etree.parse(defs.root+defs.geohtmls + '/' + file,htmlparser)
+    root = tree.getroot()
     ctable = root[1][4][0][0][5][2][1][0][0][0][0][0][5][0][0][0]
     print cleanhtml(ctable)
 
