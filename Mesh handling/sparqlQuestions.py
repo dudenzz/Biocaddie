@@ -21,38 +21,31 @@ def getConcepts(word):
 	
 def getLabels(concept):
 	sparql = SPARQLWrapper("http://boromir.cie.put.poznan.pl:3030/Mesh/sparql")
-        sparql.setQuery("SELECT * {<"+concept+">  <http://www.w3.org/2000/01/rdf-schema#label> ?v}")
+        sparql.setQuery("""SELECT * {
+        {
+        	<"""+concept+""">  <http://www.w3.org/2000/01/rdf-schema#label> ?v
+        } UNION
+        {
+        	<"""+concept+""">  <http://id.nlm.nih.gov/mesh/vocab#prefLabel> ?v
+        } UNION
+        {
+        	?tmp ?r <"""+concept+"""> .
+          	?tmp <http://www.w3.org/2000/01/rdf-schema#label> ?v
+        } UNION
+        {
+        	<"""+concept+""">  ?r ?tmp .
+			?tmp <http://www.w3.org/2000/01/rdf-schema#label> ?v
+        } UNION
+        {
+        	<"""+concept+""">  ?r ?tmp .
+			?tmp <http://id.nlm.nih.gov/mesh/vocab#prefLabel> ?v
+        }
+        }""")
         sparql.setReturnFormat(JSON)
         results = sparql.query().convert()
         rets = []
         for i in results['results']['bindings']:
                 rets.append(i['v']['value'])
-	sparql.setQuery("""
-		SELECT ?v
-		WHERE
-		{
-			<"""+concept+""">  ?r ?tmp .
-			?tmp <http://www.w3.org/2000/01/rdf-schema#label> ?v
-		}""")
-	
-        sparql.setReturnFormat(JSON)
-        results = sparql.query().convert()
-        for i in results['results']['bindings']:
-                rets.append(i['v']['value'])
-	
-	sparql.setQuery("""
-                SELECT ?v
-                WHERE
-                {
-                        ?tmp ?r <"""+concept+"""> .
-                        ?tmp <http://www.w3.org/2000/01/rdf-schema#label> ?v
-                }""")
-        sparql.setReturnFormat(JSON)
-        results = sparql.query().convert()
-        for i in results['results']['bindings']:
-                rets.append(i['v']['value'])
-
-
         return rets
 
 
