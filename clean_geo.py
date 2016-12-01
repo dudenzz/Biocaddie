@@ -1,10 +1,12 @@
 __author__ = 'Asus'
 
 from os import listdir
-from initials import defaults as defs
+from initials import defaults
 from lxml import etree
 import re
 
+
+defs = defaults()
 def cleanhtml(raw_html):
   cleanr = re.compile('<.*?>')
   cleantext = re.sub(cleanr, '', raw_html)
