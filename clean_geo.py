@@ -20,3 +20,4 @@ for file in listdir(defs.root+defs.geohtmls):
         print cleanhtml(etree.tostring(ctable))
     except:
         print file
+        raise
