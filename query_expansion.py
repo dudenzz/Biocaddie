@@ -20,7 +20,7 @@ def getConcepts(word):
 		}"""
 
 	sparql.setQuery(q)
-	sparql.setReturnFormat(JSON)
+	sparq 	l.setReturnFormat(JSON)
 	results = sparql.query().convert()
 	rets = []
 	for i in results['results']['bindings']:
