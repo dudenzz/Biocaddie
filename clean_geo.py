@@ -12,7 +12,9 @@ def cleanhtml(raw_html):
   cleantext = re.sub(cleanr, '', raw_html)
   return cleantext
 htmlparser = etree.HTMLParser()
-for file in listdir(defs.root+defs.geohtmls):
+for iter, file in enumerate(listdir(defs.root+defs.geohtmls)):
+    if iter % 100 == 0:
+        print iter
     tree = etree.parse(defs.root+defs.geohtmls + '/' + file,htmlparser)
     root = tree.getroot()
     try:
