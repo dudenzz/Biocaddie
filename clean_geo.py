@@ -27,6 +27,6 @@ for file in listdir(defs.root+defs.geohtmls):
             oFile.write('NA')
             oFile.close()
         except:
-            oFile = open(defs.root + defs.clean_geo + '/' + file.split('_')[0] + '.txt', 'w+')
+            oFile = open(defs.root + defs.clean_geo + '/' + 'NA_' + file.split('_')[0] + '.txt', 'w+')
             oFile.write('NA')
             oFile.close()
