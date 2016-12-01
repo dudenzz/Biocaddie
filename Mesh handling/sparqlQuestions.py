@@ -33,6 +33,10 @@ def getLabels(concept):
           	?tmp <http://www.w3.org/2000/01/rdf-schema#label> ?v
         } UNION
         {
+        	?tmp ?r <"""+concept+"""> .
+          	?tmp <http://id.nlm.nih.gov/mesh/vocab#prefLabel> ?v
+        } UNION
+        {
         	<"""+concept+""">  ?r ?tmp .
 			?tmp <http://www.w3.org/2000/01/rdf-schema#label> ?v
         } UNION
