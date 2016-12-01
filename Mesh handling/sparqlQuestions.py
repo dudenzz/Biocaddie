@@ -2,7 +2,7 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 import sys
 
 def generatePattern(word):
-	return ".*" + word + ".*"
+	return "(("+word+")|(.*[ _\-]" + word + "[ _\-].*))"
 def getConcepts(word):
 	pattern = generatePattern(word)
 	sparql = SPARQLWrapper("http://boromir.cie.put.poznan.pl:3030/Mesh/sparql")
