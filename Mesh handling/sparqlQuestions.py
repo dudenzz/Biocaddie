@@ -8,7 +8,7 @@ def getConcepts(word):
 	sparql = SPARQLWrapper("http://boromir.cie.put.poznan.pl:3030/Mesh/sparql")
 	q = """SELECT ?v 
 		{?v  <http://www.w3.org/2000/01/rdf-schema#label> ?word 
-		FILTER regex(?word, """ +  pattern + """, "i")
+		FILTER regex(?word, \"""" +  pattern + """\", "i")
 		}"""
 	print q
 	sparql.setQuery(q)
