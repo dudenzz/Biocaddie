@@ -6,6 +6,19 @@ def generatePattern(word):
 def getConcepts(word):
 	pattern = generatePattern(word)
 	sparql = SPARQLWrapper("http://boromir.cie.put.poznan.pl:3030/Mesh/sparql")
+
+	#q = """SELECT ?v
+	#	{ {?v  <http://www.w3.org/2000/01/rdf-schema#label> ?word } UNION { ?v <http://id.nlm.nih.gov/mesh/vocab#prefLabel> ?word }
+	#	FILTER regex(?word, \"""" +  pattern + """\", "i")
+	#	}"""
+
+	q = """SELECT ?v
+		{ {?v  <http://www.w3.org/2000/01/rdf-schema#label> """ +word+""" } UNION { ?v <http://id.nlm.nih.gov/mesh/vocab#prefLabel> """+word+""" }
+
+		}"""	return "(^|(.*[ _-]))" + word + "(([ _-].*)|$)"
+def getConcepts(word):
+	pattern = generatePattern(word)
+	sparql = SPARQLWrapper("http://boromir.cie.put.poznan.pl:3030/Mesh/sparql")
 	q = """SELECT ?v 
 		{ {?v  <http://www.w3.org/2000/01/rdf-schema#label> ?word } UNION { ?v <http://id.nlm.nih.gov/mesh/vocab#prefLabel> ?word }
 		FILTER regex(?word, \"""" +  pattern + """\", "i")
