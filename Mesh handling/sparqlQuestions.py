@@ -21,7 +21,7 @@ def getConcepts(word):
 	
 def getLabels(concept):
 	sparql = SPARQLWrapper("http://boromir.cie.put.poznan.pl:3030/Mesh/sparql")
-    query = """SELECT * {
+	query = """SELECT ?v {
         {
         	<"""+concept+""">  <http://www.w3.org/2000/01/rdf-schema#label> ?v
         } UNION
@@ -43,12 +43,12 @@ def getLabels(concept):
         }"""
 	print query
 	sparql.setQuery(query)
-    sparql.setReturnFormat(JSON)
-    results = sparql.query().convert()
-    rets = []
-    for i in results['results']['bindings']:
-        rets.append(i['v']['value'])
-    return rets
+	sparql.setReturnFormat(JSON)
+	results = sparql.query().convert()
+	rets = []
+	for i in results['results']['bindings']:
+		rets.append(i['v']['value'])
+	return rets
 
 
 
