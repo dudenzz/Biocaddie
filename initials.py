@@ -7,4 +7,6 @@ class defaults:
         self.xmlexamples = '/biocaddie_testing/sample_docs'
         self.geohtmls = '/biocaddie_testing/geo_html'
         self.biohtmls = '/biocaddie_testing/geo_html'
+        self.clinical_trials = '/biocaddie_testing/ct_html'
+
 

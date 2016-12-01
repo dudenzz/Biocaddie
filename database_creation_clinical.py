@@ -20,7 +20,7 @@ for i,file in enumerate(listdir(working_dir)):
                 ct = 1
                 response = urllib2.urlopen(clinical_trials_acc_link)
                 html = response.read()
-                oFile = open(defs.root + defs.geohtmls + '/' + file.split('.')[0] + '_geo.html', 'w+')
+                oFile = open(defs.root + defs.clinical_trials_htmls + '/' + file.split('.')[0] + '_geo.html', 'w+')
                 oFile.write(html)
                 oFile.close()
             except:
