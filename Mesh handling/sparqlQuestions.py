@@ -7,7 +7,8 @@ def getConcepts(word):
 	pattern = generatePattern(word)
 	sparql = SPARQLWrapper("http://boromir.cie.put.poznan.pl:3030/Mesh/sparql")
 	q = """SELECT ?v 
-		{?v  <http://www.w3.org/2000/01/rdf-schema#label>, <http://id.nlm.nih.gov/mesh/vocab#prefLabel>  ?word
+		{?v  <http://www.w3.org/2000/01/rdf-schema#label> ?word
+		 optional( ?v <http://id.nlm.nih.gov/mesh/vocab#prefLabel> ?word )
 		FILTER regex(?word, \"""" +  pattern + """\", "i")
 		}"""
 	print q
@@ -21,7 +22,7 @@ def getConcepts(word):
 	
 def getLabels(concept):
 	sparql = SPARQLWrapper("http://boromir.cie.put.poznan.pl:3030/Mesh/sparql")
-        sparql.setQuery("SELECT * {<"+concept+">  <http://www.w3.org/2000/01/rdf-schema#label>, <http://id.nlm.nih.gov/mesh/vocab#prefLabel>  ?v}")
+        sparql.setQuery("SELECT * {<"+concept+">  <http://www.w3.org/2000/01/rdf-schema#label> ?v}")
         sparql.setReturnFormat(JSON)
         results = sparql.query().convert()
         rets = []
@@ -32,7 +33,7 @@ def getLabels(concept):
 		WHERE
 		{
 			<"""+concept+""">  ?r ?tmp .
-			?tmp <http://www.w3.org/2000/01/rdf-schema#label>, <http://id.nlm.nih.gov/mesh/vocab#prefLabel>  ?v
+			?tmp <http://www.w3.org/2000/01/rdf-schema#label> ?v
 		}""")
 	
         sparql.setReturnFormat(JSON)
@@ -45,7 +46,7 @@ def getLabels(concept):
                 WHERE
                 {
                         ?tmp ?r <"""+concept+"""> .
-                        ?tmp <http://www.w3.org/2000/01/rdf-schema#label>, <http://id.nlm.nih.gov/mesh/vocab#prefLabel>  ?v
+                        ?tmp <http://www.w3.org/2000/01/rdf-schema#label> ?v
                 }""")
         sparql.setReturnFormat(JSON)
         results = sparql.query().convert()
