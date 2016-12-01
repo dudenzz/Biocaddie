@@ -26,7 +26,7 @@ for iter, file in enumerate(listdir(defs.root+defs.geohtmls)):
         try:
             ctable = root[1]
             oFile = open(defs.root + defs.clean_geo + '/' + 'not_parsed_' + file.split('_')[0] + '.txt', 'w+')
-            oFile.write('NA')
+            oFile.write(cleanhtml(etree.tostring(root)))
             oFile.close()
         except:
             oFile = open(defs.root + defs.clean_geo + '/' + 'NA_' + file.split('_')[0] + '.txt', 'w+')
