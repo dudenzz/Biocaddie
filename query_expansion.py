@@ -64,7 +64,7 @@ for i in queriesFile:
 	print 'Query: ' + i
 	for word in i.split(' '):
 		if len(i) > 1:
-			for c in getConcepts()
+			for c in getConcepts():
 				print c
 				labels = getLabels(c)
 				for label in labels:
