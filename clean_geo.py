@@ -15,6 +15,8 @@ htmlparser = etree.HTMLParser()
 for file in listdir(defs.root+defs.geohtmls):
     tree = etree.parse(defs.root+defs.geohtmls + '/' + file,htmlparser)
     root = tree.getroot()
-    ctable = root[1][4][0][0][5][2][1][0][0][0][0][0][0][5][0][0][0]
-    print cleanhtml(etree.tostring(ctable))
-
+    try:
+        ctable = root[1][4][0][0][5][2][1][0][0][0][0][0][0][5][0][0][0]
+        print cleanhtml(etree.tostring(ctable))
+    except:
+        print file
