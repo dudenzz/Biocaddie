@@ -19,5 +19,7 @@ for file in listdir(defs.root+defs.geohtmls):
         ctable = root[1][4][0][0][5][2][1][0][0][0][0][0][0][5][0][0][0]
         print cleanhtml(etree.tostring(ctable))
     except:
-        print file
-        raise
+        try:
+            ctable = root[1]
+        except:
+            raise
