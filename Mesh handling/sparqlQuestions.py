@@ -13,7 +13,7 @@ def getConcepts(word):
 	#	}"""
 
 	q = """SELECT ?v
-		{ {?v  <http://www.w3.org/2000/01/rdf-schema#label> \"""" +word+"""\" } UNION { ?v <http://id.nlm.nih.gov/mesh/vocab#prefLabel> \""""+word+"""\" }
+		{ {?v  <http://www.w3.org/2000/01/rdf-schema#label> \"""" +word+"""\"@en } UNION { ?v <http://id.nlm.nih.gov/mesh/vocab#prefLabel> \""""+word+"""\"@en }
 
 		}"""
 
