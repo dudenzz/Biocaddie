@@ -17,9 +17,16 @@ for file in listdir(defs.root+defs.geohtmls):
     root = tree.getroot()
     try:
         ctable = root[1][4][0][0][5][2][1][0][0][0][0][0][0][5][0][0][0]
-        print cleanhtml(etree.tostring(ctable))
+        oFile = open(defs.root + defs.clean_geo + '/' + file.split('_')[0] + '.txt', 'w+')
+        oFile.write(cleanhtml(etree.tostring(ctable)))
+        oFile.close()
     except:
         try:
             ctable = root[1]
+            oFile = open(defs.root + defs.clean_geo + '/' + 'not_parsed_' + file.split('_')[0] + '.txt', 'w+')
+            oFile.write('NA')
+            oFile.close()
         except:
-            raise
+            oFile = open(defs.root + defs.clean_geo + '/' + file.split('_')[0] + '.txt', 'w+')
+            oFile.write('NA')
+            oFile.close()
