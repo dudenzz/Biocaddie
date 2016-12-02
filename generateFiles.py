@@ -124,7 +124,7 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                         print file
                         raise
                     if text == "":
-                        print "empty file"
+                        print "empty file" + file
                         raise
                     doc += text + "</body>\n + <\doc>"
                     oFile = open(defs.root + defs.clean_all + '/' + file.split('.') + '.txt')
