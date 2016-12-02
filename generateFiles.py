@@ -56,6 +56,6 @@ for file in os.listdir(defs.root + defs.xmldocs):
                 repoid = 18
             if repo == 'proteomexchange':
                 repoid = 19
-            if repo == 0
+            if repo == 0:
                 print repo
                 raise
