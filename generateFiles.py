@@ -132,7 +132,14 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                             except:
                                 ok = 1
                         if repoid == 9:
-                            text = jsonTree['organism']['source']['commonName'] + jsonTree['dataItem']['description']
+                            try:
+                                text += jsonTree['organism']['source']['commonName']
+                            except:
+                                ok = 1
+                            try:
+                                text += jsonTree['dataItem']['description']
+                            except:
+                                ok = 1
                         if repoid == 10:
                             try:
                                 iFile = open(defs.root + defs.clean_geo + '/' + file.split('.')[0] + '.txt')
