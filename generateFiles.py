@@ -5,7 +5,9 @@ import initials
 import os
 defs = initials.defaults()
 
-for file in os.listdir(defs.root + defs.xmldocs):
+for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
+    if iter%1000 == 0:
+        print iter
     tree = ET.parse(defs.root + defs.xmldocs + '/' + file)
     root = tree.getroot()
     doc = '<doc>\n\t<docid>' + file.split('.')[0] + '</docid>\n\t<doctitle>'
