@@ -13,7 +13,10 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
     doc = '<doc>\n\t<docid>' + file.split('.')[0] + '</docid>\n\t<doctitle>'
     for elem in root:
         if elem.tag == 'TITLE':
-            doc += elem.text + '</doctitle> + \n\t <body>'
+            try:
+                doc += elem.text + '</doctitle> + \n\t <body>'
+            except:
+                doc += '</doctitle> + \n\t <body>'
         if elem.tag == 'REPOSITORY':
             try:
                 repo = elem.text.split('_')[0]
@@ -61,3 +64,16 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
             if repo == 0:
                 print repo
                 raise
+            for i_elem in root:
+                if i_elem.tag == 'METADATA':
+                    text = ''
+                    jsonTree = json.loads(i_elem.text)
+                    if repo == 1:
+                        text = jsonTree['dataItem']['description']
+                    if repo == 2:
+                        text = jsonTree['dataItem']['description'] + " " + jsonTree['organism']['target']['species']
+                    if repo == 3:
+                        text = jsonTree['anatomicalPart']['name'] + " " + jsonTree['disease']['name'] + " " + jsonTree['organism']['name'] + " " + jsonTree['organism']['scientificName']
+                    if repo == 4:
+                        text = jsonTree['StudyGroup']['description'] + " " + jsonTree['studyGroup']['criteria'] + " " + jsonTree['disease']['name'] + " " + jsonTree['treatment']['agent'] + " " + jsonTree['treatment']['title'] + " " + jsonTree['Dataset']['briefTitle'] + " "+ jsonTree['Dataset']['keywords'] + " " +
+            break
