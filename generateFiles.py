@@ -83,7 +83,7 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                                 ok = 1
                             for desc in jsonTree['StudyGroup']['description']:
                                 text += " " + desc
-                            for keyword in " "+ jsonTree['Dataset']['keywords']:
+                            for keyword in " "+ jsonTree['Dataset']['keyword']:
                                 text += " " + keyword
                         if repoid == 5:
                             text = jsonTree['dataset']['description']
