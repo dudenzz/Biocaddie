@@ -76,8 +76,56 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                         if repo == 3:
                             text = jsonTree['anatomicalPart']['name'] + " " + jsonTree['disease']['name'] + " " + jsonTree['organism']['name'] + " " + jsonTree['organism']['scientificName']
                         if repo == 4:
-                            text = jsonTree['StudyGroup']['description'] + " " + jsonTree['studyGroup']['criteria'] + " " + jsonTree['disease']['name'] + " " + jsonTree['treatment']['agent'] + " " + jsonTree['treatment']['title'] + " " + jsonTree['Dataset']['briefTitle'] + " "+ jsonTree['Dataset']['keywords'] + " " + jsonTree['Dataset']['description']
+                            text = jsonTree['StudyGroup']['description'] + " " + jsonTree['studyGroup']['criteria'] + " " + jsonTree['disease']['name'] + " " + jsonTree['treatment']['agent'] + " " + jsonTree['treatment']['title'] + " " + jsonTree['Dataset']['briefTitle']  + " " + jsonTree['Dataset']['description']
+                            for keyword in " "+ jsonTree['Dataset']['keywords']:
+                                text += " " + keyword
+                        if repo == 5:
+                            text = jsonTree['dataset']['description']
+                            for keyword in jsonTree['dataset']['keywords']:
+                                text += " "  + keyword
+                        if repo == 6:
+                            text = jsonTree['dataItem']['description']
+                        if repo == 7:
+                            text = jsonTree['dataItem']['description']
+                        if repo == 8:
+                            text = jsonTree['dataset']['description'] +
+                            for keyword in jsonTree['dataset']['keywords']:
+                                text += " " + keyword
+                        if repo == 9:
+                            text = jsonTree['organism']['source']['commonName'] + jsonTree['dataItem']['description']
+                        if repo == 10:
+                            try:
+                                iFile = open(defs.root + defs.clean_geo + '/' + file.split('.')[0] + '.txt')
+                                for line in iFile:
+                                    text += line
+                            except:
+                                text = 'NA'
+                        if repo == 11:
+                            text = jsonTree['dataset']['note']
+                        if repo == 12:
+                            text = jsonTree['dataItem']['description']
+                        if repo == 13:
+                            text = 'NA'
+                        if repo == 14:
+                            for me in jsonTree['materialEntity']:
+                                text += " " + me['text']
+                        if repo == 15:
+                            text = jsonTree['treatment']['description']
+                        if repo == 16:
+                            text = jsonTree['MESHterm'] + " " + jsonTree['phen'] + " " + jsonTree['phenID'] + " " + jsonTree['desc']
+                        if repo == 17:
+                            text = jsonTree['dataset']['description']
+                        if repo == 18:
+                            text = jsonTree['dataset']['description']
+                        if repo == 19:
+                            for keyword in jsonTree['keywords']:
+                                text += " " + keyword
                     except:
                         print file
                         raise
+                    if text == "":
+                        print "empty file"
+                        raise
+                    doc += text + "</body>\n + <\doc>"
+                    oFile = open(defs.root + defs.clean_all + '/' + file.split('.') + '.txt')
             break
