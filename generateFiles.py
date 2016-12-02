@@ -70,7 +70,10 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                     jsonTree = json.loads(i_elem.text)
                     try:
                         if repoid == 1:
-                            text = jsonTree['dataItem']['description']
+                            try:
+                                text = jsonTree['dataItem']['description']
+                            except:
+                                text = jsonTree['dataItem']['title']
                         if repoid == 2:
                             try:
                                 text = jsonTree['dataItem']['description'] + " "
