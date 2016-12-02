@@ -134,5 +134,5 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                         print "empty file" + file
                         raise
                     doc += text + "</body>\n + <\doc>"
-                    oFile = open(defs.root + defs.clean_all + '/' + file.split('.')[0] + '.txt')
+                    oFile = open(defs.root + defs.clean_all + '/' + file.split('.')[0] + '.txt', 'w+')
             break
