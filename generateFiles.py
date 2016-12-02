@@ -68,12 +68,16 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                 if i_elem.tag == 'METADATA':
                     text = ''
                     jsonTree = json.loads(i_elem.text)
-                    if repo == 1:
-                        text = jsonTree['dataItem']['description']
-                    if repo == 2:
-                        text = jsonTree['dataItem']['description'] + " " + jsonTree['organism']['target']['species']
-                    if repo == 3:
-                        text = jsonTree['anatomicalPart']['name'] + " " + jsonTree['disease']['name'] + " " + jsonTree['organism']['name'] + " " + jsonTree['organism']['scientificName']
-                    if repo == 4:
-                        text = jsonTree['StudyGroup']['description'] + " " + jsonTree['studyGroup']['criteria'] + " " + jsonTree['disease']['name'] + " " + jsonTree['treatment']['agent'] + " " + jsonTree['treatment']['title'] + " " + jsonTree['Dataset']['briefTitle'] + " "+ jsonTree['Dataset']['keywords'] + " " +
+                    try:
+                        if repo == 1:
+                            text = jsonTree['dataItem']['description']
+                        if repo == 2:
+                            text = jsonTree['dataItem']['description'] + " " + jsonTree['organism']['target']['species']
+                        if repo == 3:
+                            text = jsonTree['anatomicalPart']['name'] + " " + jsonTree['disease']['name'] + " " + jsonTree['organism']['name'] + " " + jsonTree['organism']['scientificName']
+                        if repo == 4:
+                            text = jsonTree['StudyGroup']['description'] + " " + jsonTree['studyGroup']['criteria'] + " " + jsonTree['disease']['name'] + " " + jsonTree['treatment']['agent'] + " " + jsonTree['treatment']['title'] + " " + jsonTree['Dataset']['briefTitle'] + " "+ jsonTree['Dataset']['keywords'] + " " + jsonTree['Dataset']['description']
+                    except:
+                        print file
+                        raise
             break
