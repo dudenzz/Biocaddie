@@ -110,7 +110,7 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                         if repoid == 7:
                             try:
                                 text = jsonTree['dataset']['description']
-                            except
+                            except:
                                 for kw in jsonTree['dataset']['keywords']:
                                     text += " " + kw
                         if repoid == 8:
