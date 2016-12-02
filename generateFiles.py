@@ -90,7 +90,7 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                             for part in jsonTree['disease']:
                                 text += part['name'] + " "
                             for org in jsonTree['organism']:
-                            text+=  org['name'] + " " + org['scientificName']
+                                text+=  org['name'] + " " + org['scientificName']
                         if repoid == 4:
                             try:
                                 text = jsonTree['Study']['recruits']['criteria']  + " "  + jsonTree['Dataset']['description']
