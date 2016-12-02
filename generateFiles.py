@@ -124,6 +124,7 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                         print file
                         raise
                     if text == "":
+                        print repo
                         print "empty file" + file
                         raise
                     doc += text + "</body>\n + <\doc>"
