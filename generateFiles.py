@@ -69,55 +69,55 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                     text = ''
                     jsonTree = json.loads(i_elem.text)
                     try:
-                        if repo == 1:
+                        if repoid == 1:
                             text = jsonTree['dataItem']['description']
-                        if repo == 2:
+                        if repoid == 2:
                             text = jsonTree['dataItem']['description'] + " " + jsonTree['organism']['target']['species']
-                        if repo == 3:
+                        if repoid == 3:
                             text = jsonTree['anatomicalPart']['name'] + " " + jsonTree['disease']['name'] + " " + jsonTree['organism']['name'] + " " + jsonTree['organism']['scientificName']
-                        if repo == 4:
+                        if repoid == 4:
                             text = jsonTree['StudyGroup']['description'] + " " + jsonTree['studyGroup']['criteria'] + " " + jsonTree['disease']['name'] + " " + jsonTree['treatment']['agent'] + " " + jsonTree['treatment']['title'] + " " + jsonTree['Dataset']['briefTitle']  + " " + jsonTree['Dataset']['description']
                             for keyword in " "+ jsonTree['Dataset']['keywords']:
                                 text += " " + keyword
-                        if repo == 5:
+                        if repoid == 5:
                             text = jsonTree['dataset']['description']
                             for keyword in jsonTree['dataset']['keywords']:
                                 text += " "  + keyword
-                        if repo == 6:
+                        if repoid == 6:
                             text = jsonTree['dataItem']['description']
-                        if repo == 7:
+                        if repoid == 7:
                             text = jsonTree['dataItem']['description']
-                        if repo == 8:
+                        if repoid == 8:
                             text = jsonTree['dataset']['description']
                             for keyword in jsonTree['dataset']['keywords']:
                                 text += " " + keyword
-                        if repo == 9:
+                        if repoid == 9:
                             text = jsonTree['organism']['source']['commonName'] + jsonTree['dataItem']['description']
-                        if repo == 10:
+                        if repoid == 10:
                             try:
                                 iFile = open(defs.root + defs.clean_geo + '/' + file.split('.')[0] + '.txt')
                                 for line in iFile:
                                     text += line
                             except:
                                 text = 'NA'
-                        if repo == 11:
+                        if repoid == 11:
                             text = jsonTree['dataset']['note']
-                        if repo == 12:
+                        if repoid == 12:
                             text = jsonTree['dataItem']['description']
-                        if repo == 13:
+                        if repoid == 13:
                             text = 'NA'
-                        if repo == 14:
+                        if repoid == 14:
                             for me in jsonTree['materialEntity']:
                                 text += " " + me['text']
-                        if repo == 15:
+                        if repoid == 15:
                             text = jsonTree['treatment']['description']
-                        if repo == 16:
+                        if repoid == 16:
                             text = jsonTree['MESHterm'] + " " + jsonTree['phen'] + " " + jsonTree['phenID'] + " " + jsonTree['desc']
-                        if repo == 17:
+                        if repoid == 17:
                             text = jsonTree['dataset']['description']
-                        if repo == 18:
+                        if repoid == 18:
                             text = jsonTree['dataset']['description']
-                        if repo == 19:
+                        if repoid == 19:
                             for keyword in jsonTree['keywords']:
                                 text += " " + keyword
                     except:
