@@ -88,7 +88,7 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                         if repo == 7:
                             text = jsonTree['dataItem']['description']
                         if repo == 8:
-                            text = jsonTree['dataset']['description'] +
+                            text = jsonTree['dataset']['description']
                             for keyword in jsonTree['dataset']['keywords']:
                                 text += " " + keyword
                         if repo == 9:
