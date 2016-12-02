@@ -135,6 +135,6 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                         raise
                     doc += text + "</body>\n + <\doc>"
                     oFile = open(defs.root + defs.clean_all + '/' + file.split('.')[0] + '.txt', 'w+')
-                    oFile.write(u''.join(doc))
+                    oFile.write(doc.encode('utf-8'))
                     oFile.close()
             break
