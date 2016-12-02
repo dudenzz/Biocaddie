@@ -72,7 +72,10 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                         if repoid == 1:
                             text = jsonTree['dataItem']['description']
                         if repoid == 2:
-                            text = jsonTree['dataItem']['description'] + " "
+                            try:
+                                text = jsonTree['dataItem']['description'] + " "
+                            except:
+                                ok = 1
                             for spec in jsonTree['organism']['target']:
                                 text += spec['species']
                         if repoid == 3:
