@@ -6,7 +6,7 @@ import os
 defs = initials.defaults()
 
 for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
-    if iter%1000 == 0:
+    if iter%10 == 0:
         print iter
     tree = ET.parse(defs.root + defs.xmldocs + '/' + file)
     root = tree.getroot()
@@ -190,9 +190,10 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                     except:
                         print file
                         raise
+                    errFile = open('error_log','w+')
                     if text == "":
-                        print repo
-                        print "empty file " + file
+                        errFile.write(repo)
+                        errFile.write("empty file " + file)
 
                     doc += text + "</body>\n + <\doc>"
                     oFile = open(defs.root + defs.clean_all + '/' + file.split('.')[0] + '.txt', 'w+')
