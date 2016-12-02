@@ -126,8 +126,11 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                                 text = jsonTree['dataset']['description']
                             except:
                                 ok = 1
-                            for keyword in jsonTree['dataset']['keywords']:
-                                text += " " + keyword
+                            try:
+                                for keyword in jsonTree['dataset']['keywords']:
+                                    text += " " + keyword
+                            except:
+                                ok = 1
                         if repoid == 9:
                             text = jsonTree['organism']['source']['commonName'] + jsonTree['dataItem']['description']
                         if repoid == 10:
