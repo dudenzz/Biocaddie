@@ -156,7 +156,10 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                             except:
                                 text = 'NA'
                         if repoid == 11:
-                            text = jsonTree['dataset']['note']
+                            try:
+                                text = jsonTree['dataset']['note']
+                            except:
+                                ok = 1
                         if repoid == 12:
                             text = jsonTree['dataItem']['description']
                         if repoid == 13:
