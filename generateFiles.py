@@ -130,7 +130,10 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                             text = 'NA'
                         if repoid == 14:
                             for me in jsonTree['materialEntity']:
-                                text += " " + me['text']
+                                try:
+                                    text += " " + me['name']
+                                except:
+                                    text += " " + me['formula']
                         if repoid == 15:
                             text = jsonTree['treatment']['description']
                         if repoid == 16:
