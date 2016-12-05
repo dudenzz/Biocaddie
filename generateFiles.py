@@ -6,7 +6,7 @@ import os
 defs = initials.defaults()
 
 for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
-    if iter%100 == 0:
+    if iter%1000 == 0:
         print iter
     tree = ET.parse(defs.root + defs.xmldocs + '/' + file)
     root = tree.getroot()
