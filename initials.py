@@ -9,8 +9,8 @@ class defaults:
         self.clean_geo = '/biocaddie_testing/clean/geo'
         self.clean_all = '/biocaddie_testing/clean/all'
         self.biohtmls = '/biocaddie_testing/geo_html'
-        self.queries = '/biocaddie_testing/queries/raw_queries'
-        self.exp_queries = '/biocaddie_testing/queries/exp_queries'
+        self.queries = '/biocaddie_testing/queries/raw_queries' #plik
+        self.exp_queries = '/biocaddie_testing/queries/exp_queries' #plik
         self.clinical_trials_htmls = '/biocaddie_testing/ct_html'
 
 

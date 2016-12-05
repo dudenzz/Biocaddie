@@ -12,7 +12,7 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
     root = tree.getroot()
     doc = '<doc>\n\t<docid>' + file.split('.')[0] + '</docid>\n\t<doctitle>'
     for elem in root:
-        if elem.tag == 'TITLE':
+                if elem.tag == 'TITLE':
             try:
                 doc += elem.text + '</doctitle> + \n\t <body>'
             except:
