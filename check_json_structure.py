@@ -28,14 +28,20 @@ def getShortJsonKeys (jsonArg, tabDelimiter):
         for key, value in jsonArg.iteritems():
             result += tabDelimiter + key + '\n'
             if isinstance(value,dict):
-                result += getJsonKeys(value, tabD)
-            if isinstance(value, list):
-                result += tabD + '[List_inside]\n'
+                result += getShortJsonKeys(value, tabD)
+            if isinstance(value, list) and len(value):
+                #result += tabD + '[List_inside]\n'
+                try:
+                    result += tabD + '[LIST]\n' + getShortJsonKeys(value[0], tabD) + tabD + '[/LIST]\n'
+                    #print file,' OK'
+                except (Exception) as e:
+                    print repr(e) + file + '\n'
+                    print result
     return result
 
 
 jsonStructures = []
-
+jsonFiles = []
 
 for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
     if iter%1000 == 0:
@@ -54,12 +60,14 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                     break
             if (newPattern):
                 jsonStructures.append(jStructure)
+                jsonFiles.append(file)
 
-logFile = open('jsonStructures_cia_030216.log','w')
+logFile = open('yped_030716 LIST.log','w')
 logFile.write('Number of different structure patterns: '+str(len(jsonStructures))+'\n')
 idx = 1
 for elem in jsonStructures:
     logFile.write(str(idx)+'\n')
+    logFile.write('Example file: ' + jsonFiles[idx-1] + '\n')
     logFile.write(elem+'\n')
     idx +=1
 logFile.close()
