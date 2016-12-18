@@ -10,13 +10,13 @@ def handleExc():
     errstr = repo + "\t" + file + "\t" + repr(e) + "\t" + format(
         sys.exc_info()[-1].tb_lineno) + '\t' + str(e) + '\n'
     #print errstr
-    exceptionFile = open('except_log yped_030716.log', 'a')
+    exceptionFile = open('except_log geo_022216.log', 'a')
     exceptionFile.write(errstr)
     exceptionFile.close()
     return
 
 
-exceptionFile = open('except_log yped_030716.log','w')
+exceptionFile = open('except_log geo_022216.log','w')
 exceptionFile.write("Repo\tPlik\tError\tCodeLine\tJsonClass\n")
 exceptionFile.close()
 errFile = open('error_log','w')
@@ -223,6 +223,13 @@ for iter, file in enumerate(os.listdir(defs.root + defs.xmldocs)):
                 try:
                     if jsonTree['dataItem']['description'] != 'NA':
                         text += jsonTree['dataItem']['description'] + ' '
+                except (Exception, IndexError) as e:
+                    handleExc()
+                try:
+                    iFile = open(defs.root + defs.clean_geo + '/' + file.split('.')[0] + '.txt')
+                    text += '\n'
+                    for line in iFile:
+                        text += line
                 except (Exception, IndexError) as e:
                     handleExc()
             if repo == 'mpd':
