@@ -1,4 +1,4 @@
-__author__ = 'Artur Cieslewicz'
+#__author__ = 'Artur Cieslewicz'
 import json
 import os
 import xml.etree.ElementTree as ET
