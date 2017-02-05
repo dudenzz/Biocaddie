@@ -16,7 +16,7 @@ def loadMeshDict():
             value.append(line.replace('\n',''))
         else:
             #nowy klucz
-            dict[key] = [line]
+            dict[key] = [line.replace('\n','')]
     return dict
 
 def splitString(str):
