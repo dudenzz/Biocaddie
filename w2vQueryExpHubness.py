@@ -31,7 +31,6 @@ idx=1
 #pubmed
 w2vTreshold=0.9
 gamma=10
-
 #biocad
 #highTreshold = 0.8
 #lowTreshold=0.7

@@ -20,7 +20,6 @@ result=''
 idx=1
 #pubmed
 w2vTreshold=0.9
-
 #biocad
 #highTreshold = 0.8
 #lowTreshold=0.7
